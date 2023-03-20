@@ -1,0 +1,354 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/stevenyang/Desktop/ECO 348 PS1.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 4 Feb 2023, 18:55:18
+
+{com}. use "/Users/stevenyang/Downloads/LibraryCheckoutData.dta", clear
+
+. sum checkouts if checkoutyear == 2005
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 3}checkouts {c |}{res}    267,000    7.960026    20.93379          1       3987
+
+{com}. sum checkouts if checkoutyear == 2006
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 3}checkouts {c |}{res}    296,289    11.38997     29.4794          1       4574
+
+{com}. sum checkouts if checkoutyear == 2007
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 3}checkouts {c |}{res}    301,909      12.119    30.16562          1       3851
+
+{com}. mdesc
+{err}command {bf}mdesc{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. tab nmis
+{err}variable {bf}nmis{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. mdesc
+{err}command {bf}mdesc{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. egen nmis = rmiss2(subjects)
+
+. drop nmis
+
+. egen nmis = rmiss2(subjects checkoutyear)
+
+. tab nmis
+
+       {txt}nmis {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}  5,543,976       96.09       96.09
+{txt}          1 {c |}{res}    225,431        3.91      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}  5,769,407      100.00
+
+{com}. drio nmis
+{err}command {bf}drio{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. drop nmis
+
+. egen nmis = rmiss2(subjects)
+
+. tab nmis
+
+       {txt}nmis {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}  5,543,976       96.09       96.09
+{txt}          1 {c |}{res}    225,431        3.91      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}  5,769,407      100.00
+
+{com}. tab nmis checkoutyear
+
+           {txt}{c |}                                          year
+      nmis {c |}      2005       2006       2007       2008       2009       2010       2011       2012 {c |}     Total
+{hline 11}{c +}{hline 88}{c +}{hline 10}
+         0 {c |}{res}   245,499    273,875    280,547    291,280    301,597    306,218    352,469    317,077 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}    21,501     22,414     21,362     20,131     19,232     17,234     15,098     13,265 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 88}{c +}{hline 10}
+     Total {c |}{res}   267,000    296,289    301,909    311,411    320,829    323,452    367,567    330,342 {txt}{c |}{res} 5,769,407 
+
+
+           {txt}{c |}                                          year
+      nmis {c |}      2013       2014       2015       2016       2017       2018       2019       2020 {c |}     Total
+{hline 11}{c +}{hline 88}{c +}{hline 10}
+         0 {c |}{res}   332,707    337,962    338,407    352,459    390,751    366,216    368,474    301,701 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}    11,601      9,954      8,669      8,625      9,690      8,567      8,095      3,406 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 88}{c +}{hline 10}
+     Total {c |}{res}   344,308    347,916    347,076    361,084    400,441    374,783    376,569    305,107 {txt}{c |}{res} 5,769,407 
+
+
+           {txt}{c |}    year
+      nmis {c |}      2021 {c |}     Total
+{hline 11}{c +}{hline 11}{c +}{hline 10}
+         0 {c |}{res}   386,737 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}     6,587 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 11}{c +}{hline 10}
+     Total {c |}{res}   393,324 {txt}{c |}{res} 5,769,407 
+
+{com}. tab nmis checkoutyear
+
+           {txt}{c |}                                                                      year
+      nmis {c |}      2005       2006       2007       2008       2009       2010       2011       2012       2013       2014       2015       2016       2017 {c |}     Total
+{hline 11}{c +}{hline 143}{c +}{hline 10}
+         0 {c |}{res}   245,499    273,875    280,547    291,280    301,597    306,218    352,469    317,077    332,707    337,962    338,407    352,459    390,751 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}    21,501     22,414     21,362     20,131     19,232     17,234     15,098     13,265     11,601      9,954      8,669      8,625      9,690 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 143}{c +}{hline 10}
+     Total {c |}{res}   267,000    296,289    301,909    311,411    320,829    323,452    367,567    330,342    344,308    347,916    347,076    361,084    400,441 {txt}{c |}{res} 5,769,407 
+
+
+           {txt}{c |}                    year
+      nmis {c |}      2018       2019       2020       2021 {c |}     Total
+{hline 11}{c +}{hline 44}{c +}{hline 10}
+         0 {c |}{res}   366,216    368,474    301,701    386,737 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}     8,567      8,095      3,406      6,587 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 44}{c +}{hline 10}
+     Total {c |}{res}   374,783    376,569    305,107    393,324 {txt}{c |}{res} 5,769,407 
+
+{com}. tab nmis checkoutyear
+
+           {txt}{c |}                                                     year
+      nmis {c |}      2005       2006       2007       2008       2009       2010       2011       2012       2013       2014 {c |}     Total
+{hline 11}{c +}{hline 110}{c +}{hline 10}
+         0 {c |}{res}   245,499    273,875    280,547    291,280    301,597    306,218    352,469    317,077    332,707    337,962 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}    21,501     22,414     21,362     20,131     19,232     17,234     15,098     13,265     11,601      9,954 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 110}{c +}{hline 10}
+     Total {c |}{res}   267,000    296,289    301,909    311,411    320,829    323,452    367,567    330,342    344,308    347,916 {txt}{c |}{res} 5,769,407 
+
+
+           {txt}{c |}                                     year
+      nmis {c |}      2015       2016       2017       2018       2019       2020       2021 {c |}     Total
+{hline 11}{c +}{hline 77}{c +}{hline 10}
+         0 {c |}{res}   338,407    352,459    390,751    366,216    368,474    301,701    386,737 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}     8,669      8,625      9,690      8,567      8,095      3,406      6,587 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 77}{c +}{hline 10}
+     Total {c |}{res}   347,076    361,084    400,441    374,783    376,569    305,107    393,324 {txt}{c |}{res} 5,769,407 
+
+{com}. tab nmis checkoutyear
+
+           {txt}{c |}                                                     year
+      nmis {c |}      2005       2006       2007       2008       2009       2010       2011       2012       2013       2014 {c |}     Total
+{hline 11}{c +}{hline 110}{c +}{hline 10}
+         0 {c |}{res}   245,499    273,875    280,547    291,280    301,597    306,218    352,469    317,077    332,707    337,962 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}    21,501     22,414     21,362     20,131     19,232     17,234     15,098     13,265     11,601      9,954 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 110}{c +}{hline 10}
+     Total {c |}{res}   267,000    296,289    301,909    311,411    320,829    323,452    367,567    330,342    344,308    347,916 {txt}{c |}{res} 5,769,407 
+
+
+           {txt}{c |}                                     year
+      nmis {c |}      2015       2016       2017       2018       2019       2020       2021 {c |}     Total
+{hline 11}{c +}{hline 77}{c +}{hline 10}
+         0 {c |}{res}   338,407    352,459    390,751    366,216    368,474    301,701    386,737 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}     8,669      8,625      9,690      8,567      8,095      3,406      6,587 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 77}{c +}{hline 10}
+     Total {c |}{res}   347,076    361,084    400,441    374,783    376,569    305,107    393,324 {txt}{c |}{res} 5,769,407 
+
+{com}. tab nmis checkoutyear
+
+           {txt}{c |}                                                year
+      nmis {c |}      2005       2006       2007       2008       2009       2010       2011       2012       2013 {c |}     Total
+{hline 11}{c +}{hline 99}{c +}{hline 10}
+         0 {c |}{res}   245,499    273,875    280,547    291,280    301,597    306,218    352,469    317,077    332,707 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}    21,501     22,414     21,362     20,131     19,232     17,234     15,098     13,265     11,601 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 99}{c +}{hline 10}
+     Total {c |}{res}   267,000    296,289    301,909    311,411    320,829    323,452    367,567    330,342    344,308 {txt}{c |}{res} 5,769,407 
+
+
+           {txt}{c |}                                          year
+      nmis {c |}      2014       2015       2016       2017       2018       2019       2020       2021 {c |}     Total
+{hline 11}{c +}{hline 88}{c +}{hline 10}
+         0 {c |}{res}   337,962    338,407    352,459    390,751    366,216    368,474    301,701    386,737 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}     9,954      8,669      8,625      9,690      8,567      8,095      3,406      6,587 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 88}{c +}{hline 10}
+     Total {c |}{res}   347,916    347,076    361,084    400,441    374,783    376,569    305,107    393,324 {txt}{c |}{res} 5,769,407 
+
+{com}. tab nmis checkoutyear
+
+           {txt}{c |}                                          year
+      nmis {c |}      2005       2006       2007       2008       2009       2010       2011       2012 {c |}     Total
+{hline 11}{c +}{hline 88}{c +}{hline 10}
+         0 {c |}{res}   245,499    273,875    280,547    291,280    301,597    306,218    352,469    317,077 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}    21,501     22,414     21,362     20,131     19,232     17,234     15,098     13,265 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 88}{c +}{hline 10}
+     Total {c |}{res}   267,000    296,289    301,909    311,411    320,829    323,452    367,567    330,342 {txt}{c |}{res} 5,769,407 
+
+
+           {txt}{c |}                                          year
+      nmis {c |}      2013       2014       2015       2016       2017       2018       2019       2020 {c |}     Total
+{hline 11}{c +}{hline 88}{c +}{hline 10}
+         0 {c |}{res}   332,707    337,962    338,407    352,459    390,751    366,216    368,474    301,701 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}    11,601      9,954      8,669      8,625      9,690      8,567      8,095      3,406 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 88}{c +}{hline 10}
+     Total {c |}{res}   344,308    347,916    347,076    361,084    400,441    374,783    376,569    305,107 {txt}{c |}{res} 5,769,407 
+
+
+           {txt}{c |}    year
+      nmis {c |}      2021 {c |}     Total
+{hline 11}{c +}{hline 11}{c +}{hline 10}
+         0 {c |}{res}   386,737 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}     6,587 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 11}{c +}{hline 10}
+     Total {c |}{res}   393,324 {txt}{c |}{res} 5,769,407 
+
+{com}. tab nmis checkoutyear
+
+           {txt}{c |}                                                year
+      nmis {c |}      2005       2006       2007       2008       2009       2010       2011       2012       2013 {c |}     Total
+{hline 11}{c +}{hline 99}{c +}{hline 10}
+         0 {c |}{res}   245,499    273,875    280,547    291,280    301,597    306,218    352,469    317,077    332,707 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}    21,501     22,414     21,362     20,131     19,232     17,234     15,098     13,265     11,601 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 99}{c +}{hline 10}
+     Total {c |}{res}   267,000    296,289    301,909    311,411    320,829    323,452    367,567    330,342    344,308 {txt}{c |}{res} 5,769,407 
+
+
+           {txt}{c |}                                          year
+      nmis {c |}      2014       2015       2016       2017       2018       2019       2020       2021 {c |}     Total
+{hline 11}{c +}{hline 88}{c +}{hline 10}
+         0 {c |}{res}   337,962    338,407    352,459    390,751    366,216    368,474    301,701    386,737 {txt}{c |}{res} 5,543,976 
+{txt}         1 {c |}{res}     9,954      8,669      8,625      9,690      8,567      8,095      3,406      6,587 {txt}{c |}{res}   225,431 
+{txt}{hline 11}{c +}{hline 88}{c +}{hline 10}
+     Total {c |}{res}   347,916    347,076    361,084    400,441    374,783    376,569    305,107    393,324 {txt}{c |}{res} 5,769,407 
+
+{com}. sum subject
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}subjects {c |}{res}          0
+
+{com}. sum subjects
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}subjects {c |}{res}          0
+
+{com}. subjects
+{err}command {bf}subjects{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. rmiss drop if mi(subjects)
+{err}command {bf}rmiss{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. rmiss2 drop if mi(subjects)
+{err}command {bf}rmiss2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. rmiss2 
+{err}command {bf}rmiss2{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ssc install rmiss2
+{txt}{err}{bf:ssc install}: "{bf:rmiss2}" not found at SSC, type {stata search rmiss2}
+(To find all packages at SSC that start with r, type {stata ssc describe r})
+{txt}{search r(601), local:r(601);}
+
+{com}. drop is missing(subjects)
+{err}variable {bf}is{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. drop if missing(subjects)
+{txt}(225,431 observations deleted)
+
+{com}. gen title_oprah=strpos(title,"orpha")>0
+
+. sum title_oprah 
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 1}title_oprah {c |}{res}  5,543,976    .0003878     .019689          0          1
+
+{com}. sum checkouts title_oprah 
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 3}checkouts {c |}{res}  5,543,976    13.89744    42.34711          1       7850
+{txt}{space 1}title_oprah {c |}{res}  5,543,976    .0003878     .019689          0          1
+
+{com}. reg checkouts title_oprah 
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res} 5,543,976
+{txt}{hline 13}{c +}{hline 34}   F(1, 5543974)   = {res}     0.62
+{txt}       Model {c |} {res} 1111.25351         1  1111.25351   {txt}Prob > F        ={res}    0.4312
+{txt}    Residual {c |} {res} 9.9419e+09 5,543,974  1793.27825   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0000
+{txt}       Total {c |} {res} 9.9419e+09 5,543,975  1793.27812   {txt}Root MSE        =   {res} 42.347
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   checkouts{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 1}title_oprah {c |}{col 14}{res}{space 2} .7191186{col 26}{space 2} .9134585{col 37}{space 1}    0.79{col 46}{space 3}0.431{col 54}{space 4}-1.071228{col 67}{space 3} 2.509465
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 13.89716{col 26}{space 2} .0179886{col 37}{space 1}  772.55{col 46}{space 3}0.000{col 54}{space 4}  13.8619{col 67}{space 3} 13.93242
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg checkouts title_oprah subjects checkoutyear 
+{err}no observations
+{txt}{search r(2000), local:r(2000);}
+
+{com}. gen subject_mystery=strpos(subjects,"mystery")>0
+
+. regress checkouts subject_mystery 
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res} 5,543,976
+{txt}{hline 13}{c +}{hline 34}   F(1, 5543974)   = {res}  1830.30
+{txt}       Model {c |} {res} 3281150.04         1  3281150.04   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 9.9386e+09 5,543,974  1792.68661   {txt}R-squared       ={res}    0.0003
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0003
+{txt}       Total {c |} {res} 9.9419e+09 5,543,975  1793.27812   {txt}Root MSE        =   {res}  42.34
+
+{txt}{hline 16}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      checkouts{col 17}{c |} Coefficient{col 29}  Std. err.{col 41}      t{col 49}   P>|t|{col 57}     [95% con{col 70}f. interval]
+{hline 16}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+subject_mystery {c |}{col 17}{res}{space 2}  3.14697{col 29}{space 2} .0735583{col 40}{space 1}   42.78{col 49}{space 3}0.000{col 57}{space 4} 3.002798{col 70}{space 3} 3.291142
+{txt}{space 10}_cons {c |}{col 17}{res}{space 2} 13.69655{col 29}{space 2} .0185851{col 40}{space 1}  736.96{col 49}{space 3}0.000{col 57}{space 4} 13.66012{col 70}{space 3} 13.73297
+{txt}{hline 16}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. do "/var/folders/tg/ntk053s545b13rybq511zbjh0000gn/T//SD03874.000000"
+{txt}
+{com}. gen subject_thriller= strpos(subjects,"thriller")>0
+{txt}
+{com}. gen subject_suspense= strpos(subjects,"suspense")>0
+{txt}
+{com}. keep if subject_thriller==1 | subject_mystery==1 | subject_suspense==1
+{txt}(5,042,291 observations deleted)
+
+{com}. 
+{txt}end of do-file
+
+{com}. reg checkouts subject_mystery 
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}   501,685
+{txt}{hline 13}{c +}{hline 34}   F(1, 501683)    = {res}   323.15
+{txt}       Model {c |} {res}     916308         1      916308   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.4225e+09   501,683  2835.53359   {txt}R-squared       ={res}    0.0006
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0006
+{txt}       Total {c |} {res} 1.4235e+09   501,684   2837.3544   {txt}Root MSE        =   {res}  53.25
+
+{txt}{hline 16}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      checkouts{col 17}{c |} Coefficient{col 29}  Std. err.{col 41}      t{col 49}   P>|t|{col 57}     [95% con{col 70}f. interval]
+{hline 16}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+subject_mystery {c |}{col 17}{res}{space 2}-2.964741{col 29}{space 2} .1649239{col 40}{space 1}  -17.98{col 49}{space 3}0.000{col 57}{space 4}-3.287987{col 70}{space 3}-2.641496
+{txt}{space 10}_cons {c |}{col 17}{res}{space 2} 19.80826{col 29}{space 2}   .13852{col 40}{space 1}  143.00{col 49}{space 3}0.000{col 57}{space 4} 19.53676{col 70}{space 3} 20.07975
+{txt}{hline 16}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. save "/Users/stevenyang/Downloads/LibraryCheckoutData.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/stevenyang/Downloads/LibraryCheckoutData.dta{rm}
+saved
+{p_end}
+
+{com}. use "/Users/stevenyang/Desktop/348k Casual Inference/mrc_table1-1.dta"
+{txt}(Preferred Estimates of Access and Mobility Rates by College)
+
+{com}. exit
